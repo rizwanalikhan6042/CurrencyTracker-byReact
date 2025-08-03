@@ -6,32 +6,38 @@ function useCurrencyConverter() {
     const [toCurrency, setToCurrency] = useState("INR");
     const [convertedAmount, setConvertedAmount] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [currencyOptions,setCurrencyOptions]=useState([])
+    const [rates,setRates]=useState({})
 
-    const currencyOptions = ["USD", "INR", "EUR", "GBP", "AUD", "JPY"];
+    useEffect(() => {
+        if (!fromCurrency) return;
 
-    const handleConvert = () => {
-        if (!amount || fromCurrency === "" || toCurrency === "") return;
-
-        if (fromCurrency === toCurrency) {
-            setConvertedAmount(amount);
-            return;
-        }
-
-        const url = `https://v6.exchangerate-api.com/v6/67c5f98a0b9f7ceab2f9e407/pair/${fromCurrency}/${toCurrency}/${amount}`;
+        const url = `https://api.exchangerate-api.com/v4/latest/${fromCurrency}`;
         setIsLoading(true);
 
         fetch(url)
             .then((res) => res.json())
             .then((data) => {
-                console.log("API Response:", data);
-                setConvertedAmount(data.conversion_result || data.result);
+                setCurrencyOptions([data.base, ...Object.keys(data.rates)]);
+                setRates(data.rates);
                 setIsLoading(false);
             })
             .catch((err) => {
-                console.error("Error fetching conversion rate:", err);
-                setConvertedAmount(null);
+                console.error("Error fetching rates:", err);
                 setIsLoading(false);
             });
+    }, [fromCurrency]);
+    const handleConvert = () => {
+        if (!amount || !rates ||fromCurrency === "" || toCurrency === "") return;
+
+        const rate = rates[toCurrency];
+        if (rate) {
+            setConvertedAmount((amount * rate).toFixed(2));
+        } else {
+            setConvertedAmount(null);
+        }
+
+        
     };
 
     // Optional: auto convert when values change
