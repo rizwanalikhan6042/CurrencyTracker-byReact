@@ -11,8 +11,10 @@ function CurrencyConverter() {
             <h2 className="title">Currency Converter</h2>
             <div className="input-group">
                 <input className="input-field" type="number" value={amount} onChange={(e) => {
+                    let value=parseFloat(e.target.value);
+                    if(value>=0||e.target.value==='')
                     setAmount(Number(e.target.value))
-                }} />
+                }} placeholder="Enter amount" />
                 {/* From Currency Dropdown */}
                 <select className="dropdown" value={fromCurrency} onChange={(e) => setFromCurrency(e.target.value)} >
                     {currencyOptions.map((cur) => (

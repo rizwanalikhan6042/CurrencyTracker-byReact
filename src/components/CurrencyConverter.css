@@ -1,59 +1,85 @@
-.converter-container {
-  max-width: 500px;
-  margin: 40px auto;
-  padding: 30px;
-  border-radius: 12px;
-  background-color: #f9f9f9;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  font-family: "Segoe UI", sans-serif;
-  text-align: center;
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-image: url(https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzZiZzk1NnJ6Yms0dXI4ZzIwZjd0cWNzZnhoZXM5YWRsMWhjMzJuYiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/g04lCCTUHSw03W7pqD/giphy.gif);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+
+.converter-container {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 12px;
+    background-color: #f9f9f9;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    font-family: "Segoe UI", sans-serif;
+    text-align: center;
+}
+
+
 .title {
-  font-size: 28px;
-  color: #333;
-  margin-bottom: 20px;
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
 }
 
 .input-group {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
 }
 
 .input-field,
 .dropdown {
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  min-width: 120px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    min-width: 120px;
 }
 
 .to-label {
-  align-self: center;
-  font-weight: bold;
+    align-self: center;
+    font-weight: bold;
 }
 
 .convert-button {
-  padding: 10px 25px;
-  font-size: 16px;
-  color: white;
-  background-color: #007bff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s ease;
+    padding: 10px 25px;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
 }
 
 .convert-button:hover {
-  background-color: #0056b3;
+    background-color: #0056b3;
 }
 
 .result {
-  margin-top: 25px;
-  font-size: 20px;
-  color: #222;
+    margin-top: 25px;
+    font-size: 20px;
+    color: #222;
 }
